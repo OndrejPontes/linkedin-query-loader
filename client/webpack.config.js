@@ -6,9 +6,11 @@ const nodeEnv = devBuild ? 'development' : 'production';
 
 const config = {
   entry: [
+    'bootstrap-loader',
+    'babel-polyfill',
     'es5-shim/es5-shim',
     'es5-shim/es5-sham',
-    'babel-polyfill',
+    'jquery',
     './app/bundles/queries/startup/HelloWorldApp.jsx',
   ],
 
@@ -30,18 +32,15 @@ const config = {
         NODE_ENV: JSON.stringify(nodeEnv),
       },
     }),
+    new webpack.ProvidePlugin({
+      jQuery: 'jquery'
+    }),
   ],
   module: {
     loaders: [
-      {
-        test: require.resolve('react'),
-        loader: 'imports?shim=es5-shim/es5-shim&sham=es5-shim/es5-sham',
-      },
-      {
-        test: /\.jsx?$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-      },
+      { test: require.resolve('react'), loader: 'imports?shim=es5-shim/es5-shim&sham=es5-shim/es5-sham' },
+      { test: /\.jsx?$/, loader: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
     ],
   },
 };
