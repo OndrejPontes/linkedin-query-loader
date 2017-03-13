@@ -23,7 +23,7 @@ export default class HelloWorldWidget extends React.Component {
     return (
       <div className="container">
         <h3>
-          Hello, {name}! Testin HEROKU
+          Hello, {name}! Testing HEROKU
         </h3>
         <hr />
         <form className="form-horizontal">

@@ -6,3 +6,10 @@ export function updateName(name) {
     name,
   };
 }
+
+export function addQuery(query) {
+  return {
+    type: actionTypes.ADD_QUERY,
+    query,
+  };
+}
