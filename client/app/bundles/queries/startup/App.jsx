@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { syncHistoryWithStore } from 'react-router-redux';
-import { Router, browserHistory } from 'react-router';
+import { Router, browserHistory, Route, IndexRoute } from 'react-router';
 import ReactOnRails from 'react-on-rails'
 
 import Header from "../components/Header"
@@ -14,9 +14,9 @@ import Keywords from "../containers/Keywords"
 // railsContext provides contextual information especially useful for server rendering, such as
 // knowing the locale. See the React on Rails documentation for more info on the railsContext
 export default (props, _railsContext) => {
-  const store = ReactOnRails.getStore('queriesStore');
+  const store = ReactOnRails.getStore('QueriesStore');
 
-  const history = syncHistoryWithStore(browserHistory, store,);
+  const history = syncHistoryWithStore(browserHistory, store);
 
   const reactComponent = (
     <Provider store={store}>

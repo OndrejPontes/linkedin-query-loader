@@ -18,6 +18,7 @@ const Queries = (props) => {
   const { addQuery } = actions;
   const queries = queriesStore.get('$$queries');
 
+  console.log(queries);
   // This uses the ES2015 spread operator to pass properties as it is more DRY
   // This is equivalent to:
   // <HelloWorldWidget $$helloWorldStore={$$helloWorldStore} actions={actions} />

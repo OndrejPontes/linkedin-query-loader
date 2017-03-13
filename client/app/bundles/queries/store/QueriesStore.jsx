@@ -6,15 +6,14 @@ import loggerMiddleware from 'libs/middlewares/loggerMiddleware';
 
 import reducers, { initialStates } from '../reducers';
 
-export default (props, railsContext) => {
+export default props => {
   const { queries } = props;
   const { $$queriesState } = initialStates;
 
   const initialState = {
     $$queriesStore: $$queriesState.merge({
       $$queries: queries
-    }),
-    railsContext
+    })
   };
 
   const reducer = combineReducers({
