@@ -11,7 +11,7 @@ const config = {
     'es5-shim/es5-shim',
     'es5-shim/es5-sham',
     'jquery',
-    './app/bundles/queries/startup/HelloWorldApp.jsx',
+    './app/bundles/queries/startup/App.jsx',
   ],
 
   output: {
