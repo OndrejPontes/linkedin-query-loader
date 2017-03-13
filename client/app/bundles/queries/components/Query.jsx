@@ -18,19 +18,17 @@ export default class Query extends React.Component {
   render() {
     const { queries } = this.props;
 
-    var tableQueries = [];
+    const tableQueries = [];
 
-    this.props.queries.forEach(function (query) {
+    queries.forEach(function (query) {
       tableQueries.push(
-        <tr>
-          <td>{ query.name }</td>
-          <td>{ query.value }</td>
-          <td>{ query.keys }</td>
+        <tr key={ query.get('name') }>
+          <td>{ query.get('name') }</td>
+          <td>{ query.get('value') }</td>
+          <td>{ query.get('keys') }</td>
         </tr>
       )
     });
-
-    console.log(this.props.queries);
 
     return (
       <div className="container">

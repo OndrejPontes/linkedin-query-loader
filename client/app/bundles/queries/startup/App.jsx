@@ -11,10 +11,8 @@ import Queries from '../containers/Queries';
 // railsContext provides contextual information especially useful for server rendering, such as
 // knowing the locale. See the React on Rails documentation for more info on the railsContext
 const App = (props, _railsContext) => {
-  // console.log('-------App.jsx-----------');
-  // console.log(props.queries);
-
   const store = createStore(props);
+
   const reactComponent = (
     <Provider store={store}>
       <Queries />
