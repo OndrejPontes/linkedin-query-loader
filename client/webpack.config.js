@@ -11,7 +11,13 @@ const config = {
     'es5-shim/es5-shim',
     'es5-shim/es5-sham',
     'jquery',
-    './app/bundles/queries/startup/App.jsx',
+    // 'react-bootstrap',
+    'react-dom',
+    'react-redux',
+    'react-on-rails',
+    'react-router-redux',
+    'redux-thunk',
+    './app/bundles/queries/startup/registration',
   ],
 
   output: {
@@ -22,6 +28,7 @@ const config = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
     alias: {
+      libs: path.join(process.cwd(), 'app', 'libs'),
       react: path.resolve('./node_modules/react'),
       'react-dom': path.resolve('./node_modules/react-dom'),
     },
@@ -31,6 +38,7 @@ const config = {
       'process.env': {
         NODE_ENV: JSON.stringify(nodeEnv),
       },
+      TRACE_TURBOLINKS: devBuild,
     }),
     new webpack.ProvidePlugin({
       jQuery: 'jquery'

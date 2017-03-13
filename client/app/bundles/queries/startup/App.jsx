@@ -1,10 +1,9 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import ReactOnRails from 'react-on-rails';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { Router, browserHistory } from 'react-router';
+import ReactOnRails from 'react-on-rails'
 
-import createStore from "../store/queriesStore";
 import Header from "../components/Header"
 import Queries from "../containers/Queries";
 import Keywords from "../containers/Keywords"
@@ -14,10 +13,10 @@ import Keywords from "../containers/Keywords"
 // This code here binds your smart component to the redux store.
 // railsContext provides contextual information especially useful for server rendering, such as
 // knowing the locale. See the React on Rails documentation for more info on the railsContext
-const App = (props, _railsContext) => {
-  const store = createStore(props);
+export default (props, _railsContext) => {
+  const store = ReactOnRails.getStore('queriesStore');
 
-  const history = syncHistoryWithStore(browserHistory, store);
+  const history = syncHistoryWithStore(browserHistory, store,);
 
   const reactComponent = (
     <Provider store={store}>
@@ -32,6 +31,3 @@ const App = (props, _railsContext) => {
 
   return reactComponent;
 };
-
-// This is how react_on_rails can see the HelloWorldApp in the browser.
-ReactOnRails.register({App});

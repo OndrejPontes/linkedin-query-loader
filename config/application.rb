@@ -1,4 +1,4 @@
-require_relative 'boot'
+require File.expand_path("../boot", __FILE__)
 
 require 'rails/all'
 
@@ -11,5 +11,6 @@ module LinkedinQueryLoader
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    config.action_cable.allowed_request_origins = [Rails.application.secrets.action_cable_url]
   end
 end
