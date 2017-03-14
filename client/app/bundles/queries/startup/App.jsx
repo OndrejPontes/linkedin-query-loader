@@ -1,10 +1,10 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import { syncHistoryWithStore } from 'react-router-redux';
-import { Router, browserHistory, Route, IndexRoute } from 'react-router';
+import {Provider} from 'react-redux';
+import {syncHistoryWithStore} from 'react-router-redux';
+import {Router, browserHistory, Route, IndexRoute} from 'react-router';
 import ReactOnRails from 'react-on-rails'
 
-import Header from "../components/Header"
+import MainLayout from "../components/MainLayout"
 import Queries from "../containers/Queries";
 import Keywords from "../containers/Keywords"
 
@@ -21,7 +21,7 @@ export default (props, _railsContext) => {
   const reactComponent = (
     <Provider store={store}>
       <Router history={ history }>
-        <Route path="/" component={ Header }>
+        <Route path="/" component={ MainLayout }>
           <IndexRoute component={ Queries }/>
           <Route path="keywords" component={ Keywords }/>
         </Route>

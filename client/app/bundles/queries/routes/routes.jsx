@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, IndexRoute} from 'react-router';
-import Header from "../components/Header"
+import Header from "../components/MainLayout"
 import Queries from "../containers/Queries";
 import Keywords from "../containers/Keywords"
 

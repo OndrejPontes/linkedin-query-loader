@@ -9,7 +9,7 @@
   </head>
 
   <body>
-  <%= redux_store('QueriesStore', {}) %>
+  <%= redux_store('QueriesStore', props: @site_props) %>
     <%= yield %>
   </body>
 </html>
