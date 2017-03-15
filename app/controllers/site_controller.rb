@@ -3,7 +3,7 @@ class SiteController < ApplicationController
     @site_props = { queries: [
         {
             name: '.NET',
-            value: '("{0}" OR "{1}" OR "{2}" OR "{3}" OR "{4}")',
+            value: '({0} OR {1} OR {2} OR {3} OR {4})',
             keys: ['.net', 'dotnet', 'ASP NET', 'C#', 'C++/CLI']
         },
         {

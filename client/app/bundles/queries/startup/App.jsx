@@ -10,7 +10,8 @@ import Queries from "../containers/Queries";
 import Keywords from "../containers/Keywords";
 
 export default () => {
-  injectTapEventPlugin();
+  window.tapInjected = true;
+  if (window && !window.tapInjected) {injectTapEventPlugin()}
   const store = ReactOnRails.getStore('QueriesStore');
 
   const history = syncHistoryWithStore(browserHistory, store);

@@ -14,12 +14,12 @@ export default class Keyword extends React.Component {
     queries.forEach(function (query) {
       queryList.push(
         <li className="list-group-item" key={ query.get('name') }>
-          { query.get('name') }
-          { query.get('value') }
-          <button type="button" className="btn btn-lg pull-right">
+          <span style={{ marginRight:"100px"}}>{ query.get('name') }</span>
+          description
+          <button type="button" className="btn btn-lg pull-right" style={{ margin:"0px 5px", padding:"10px 13px 6px 15px"}}>
             <span className="glyphicon glyphicon-pencil"/>&nbsp;
           </button>
-          <button type="button" className="btn btn-lg pull-right">
+          <button type="button" className="btn btn-lg pull-right" style={{ padding:"10px 13px 6px 15px"}}>
             <span className="glyphicon glyphicon-minus"/>&nbsp;
           </button>
         </li>
@@ -29,7 +29,7 @@ export default class Keyword extends React.Component {
     return (
       <div className="container">
         <div className="row">
-          <button type="button" className="btn btn-lg pull-right">
+          <button type="button" className="btn btn-lg pull-right" style={{ margin:"0px 15px 10px", padding:"13px 10px 10px 16px"}}>
             <span className="glyphicon glyphicon-plus"/>&nbsp;
           </button>
         </div>
