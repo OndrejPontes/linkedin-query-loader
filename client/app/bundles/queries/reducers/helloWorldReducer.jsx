@@ -1,8 +1,8 @@
-import Immutable from 'immutable';
+import { Map } from 'immutable';
 
 import actionTypes from '../constants/helloWorldConstants';
 
-export const $$initialState = Immutable.fromJS({
+export const $$initialState = Map({
   name: '', // this is the default state that would be used if one were not passed into the store
   $$queries: []
 });

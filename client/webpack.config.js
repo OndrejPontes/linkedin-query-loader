@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const autoprefixer = require('autoprefixer');
 
 const devBuild = process.env.NODE_ENV !== 'production';
 const nodeEnv = devBuild ? 'development' : 'production';
@@ -51,6 +52,8 @@ const config = {
       { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
     ],
   },
+  postcss: [autoprefixer],
+  sassResources: ['./app/assets/styles/app-variables.scss'],
 };
 
 module.exports = config;
