@@ -1,12 +1,12 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import Header from './Header'
 
-export default class Header extends React.Component {
+export default class MainLayout extends React.Component {
   render() {
     return (
-      <div>
-        <h1> HEADER </h1>
+      <div style={{ paddingTop: '70px' }}>
+        <Header />
         { this.props.children }
-        <h1> FOOTER </h1>
       </div>
     );
   }

@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react';
 
 // Simple example of a React "dumb" component
 export default class Query extends React.Component {
@@ -16,38 +16,56 @@ export default class Query extends React.Component {
   }
 
   render() {
-    const { queries } = this.props;
+    const {queries} = this.props;
 
-    const tableQueries = [];
+    const queryButtons = [];
+    const buttonsGrid = []
 
     queries.forEach(function (query) {
-      tableQueries.push(
-        <tr key={ query.get('name') }>
-          <td>{ query.get('name') }</td>
-          <td>{ query.get('value') }</td>
-          <td>{ query.get('keys') }</td>
-        </tr>
+      queryButtons.push(
+        <button type="button" className="btn col-sm-4">{ query.get('name')}</button>
       )
     });
 
+    for (let i = 0; i < Math.ceil(queryButtons.length / 3); i++) {
+      buttonsGrid.push(
+        <div className="row">
+          <div>{ queryButtons[i] }</div>
+          <div>{ queryButtons[i + 1] }</div>
+          <div>{ queryButtons[i + 2] }</div>
+        </div>
+      )
+    }
+
     return (
       <div className="container">
-        <h3>
-          Testing queries
-        </h3>
-        <hr />
-        <table className="table table-hover">
-          <thead>
-          <tr>
-            <th>Name</th>
-            <th>Value</th>
-            <th>Keys</th>
-          </tr>
-          </thead>
-          <tbody>
-          { tableQueries }
-          </tbody>
-        </table>
+        <div className="row">
+          <button type="button" className="btn col-sm-2">AND</button>
+          <button type="button" className="btn col-sm-2">OR</button>
+          <button type="button" className="btn col-sm-2">NOT</button>
+          <button type="button" className="btn col-sm-2">(</button>
+          <button type="button" className="btn col-sm-2">)</button>
+        </div>
+        <div className="row">
+          <div className="input-group">
+            <input type="text" className="form-control" placeholder="Create query"/>
+            {/*<button type="button" className="btn input-group-btn">LinkedIn</button>*/}
+            {/*<button type="button" className="btn input-group-btn">Copy</button>*/}
+          </div>
+        </div>
+        <div className="panel panel-default">
+          <div className="panel-body">
+            <div className="row">
+              <div className="input-group">
+                <input type="text" className="form-control" placeholder="Search for..."/>
+                <span className="input-group-btn">
+                 <button className="btn btn-default" type="button">Go!</button>
+                </span>
+              </div>
+            </div>
+            { buttonsGrid }
+          </div>
+        </div>
       </div>
     );
   }

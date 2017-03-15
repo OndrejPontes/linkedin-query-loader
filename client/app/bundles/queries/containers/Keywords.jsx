@@ -1,15 +1,23 @@
-import React, {PropTypes} from "react";
-import {connect} from "react-redux";
-import Immutable from "immutable";
+import React, { PropTypes } from 'react';
+import Keyword from '../components/Keyword';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import Immutable from 'immutable';
+import * as siteActionCreators from '../actions/helloWorldActionCreators';
 
 function select(state) {
   return { queriesStore: state.$$queriesStore };
 }
 
-const Keywords = () => {
+const Keywords = (props) => {
+  const { dispatch, queriesStore } = props;
+  const actions = bindActionCreators(siteActionCreators, dispatch);
+  const { addQuery } = actions;
+  const queries = queriesStore.get('$$queries');
+
   return (
     <h1>
-      Keywords
+      <Keyword {...{ addQuery, queries }} />
     </h1>
   );
 };
