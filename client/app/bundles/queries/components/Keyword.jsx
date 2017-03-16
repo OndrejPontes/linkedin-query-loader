@@ -29,9 +29,9 @@ export default class Keyword extends React.Component {
     return (
       <div className="container">
         <div className="row">
-          <button type="button" className="btn btn-lg pull-right" style={{ margin:"0px 15px 10px", padding:"13px 10px 10px 16px"}}>
-            <span className="glyphicon glyphicon-plus"/>&nbsp;
-          </button>
+          {/*<button type="button" className="btn btn-lg pull-right" style={{ margin:"0px 15px 10px", padding:"13px 10px 10px 16px"}}>*/}
+            {/*<span className="glyphicon glyphicon-plus"/>&nbsp;*/}
+          {/*</button>*/}
         </div>
         <ul className="list-group">
           { queryList }

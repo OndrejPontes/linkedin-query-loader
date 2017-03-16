@@ -1,6 +1,5 @@
 import React, {PropTypes,} from 'react';
 
-// import css from './Query.scss'
 
 // Simple example of a React "dumb" component
 export default class Query extends React.Component {
@@ -75,7 +74,7 @@ export default class Query extends React.Component {
 
     for (let i = 0; i < Math.ceil(queryButtons.length / 3); i++) {
       buttonsGrid.push(
-        <div className="row" style={{padding: "0px 0px 10px 15px"}} key={i}>
+        <div className="row special_red" style={{padding: "0px 0px 10px 15px"}} key={i}>
           { queryButtons[i] }
           { queryButtons[i + 1] }
           { queryButtons[i + 2] }
