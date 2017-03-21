@@ -1,13 +1,11 @@
-import React from 'react'
+import React from "react";
 import ReactOnRails from "react-on-rails";
 import injectTapEventPlugin from "react-tap-event-plugin";
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import {Provider} from "react-redux";
 import {syncHistoryWithStore} from "react-router-redux";
-import {Router, browserHistory, Route, IndexRoute} from "react-router";
-import MainLayout from "../components/MainLayout";
-import Queries from "../containers/Queries";
-import Keywords from "../containers/Keywords";
+import {browserHistory} from "react-router";
+import Root from '../components/Root'
 
 export default () => {
   window.tapInjected = true;
@@ -19,12 +17,7 @@ export default () => {
   return (
     <Provider store={store}>
       <MuiThemeProvider>
-        <Router history={ history }>
-          <Route path="/" component={ MainLayout }>
-            <IndexRoute component={ Queries }/>
-            <Route path="keywords" component={ Keywords }/>
-          </Route>
-        </Router>
+        <Root />
       </MuiThemeProvider>
     </Provider>
   );

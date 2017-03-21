@@ -1,0 +1,21 @@
+.query-form {
+  float: left;
+  width: 60%;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.query-form > form > div > label{
+  margin-top: -14px;
+}
+.query-form > form > div {
+  width: 100%;
+  padding-top: 5px;
+}
+
+.query-builder > .buttons {
+  float: left;
+  width: 20%;
+  box-sizing: border-box;
+  padding: 10px;
+}
