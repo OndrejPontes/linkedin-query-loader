@@ -1,4 +1,4 @@
-import React, {PropTypes,} from 'react';
+import React, {PropTypes} from 'react';
 
 
 // Simple example of a React "dumb" component
@@ -12,26 +12,46 @@ export default class Query extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {queryBuilder: ''};
+    this.state = {
+      new_query: {
+        name: '',
+        value: '',
+        keys: []
+      },
+      queryBuilder: ''
+    };
 
-    this.insertPredicateIntoQueryBuilder = this.insertPredicateIntoQueryBuilder.bind(this)
-    this.insertQueryIntoQueryBuilder = this.insertQueryIntoQueryBuilder.bind(this)
+    this.insertPredicateIntoQueryBuilder = this.insertPredicateIntoQueryBuilder.bind(this);
+    this.insertQueryIntoQueryBuilder = this.insertQueryIntoQueryBuilder.bind(this);
     this.searchOnLinkedIn = this.searchOnLinkedIn.bind(this)
   }
 
-  insertPredicateIntoQueryBuilder(e) {
-    let val = this.state.queryBuilder + ' ' + e.target.value;
-    this.setState({queryBuilder: val})
-  }
-
   searchOnLinkedIn() {
-    // https://www.linkedin.com/search/results/index/?keywords=%20(.net%20OR%20dotnet%20OR%20ASP%20NET%20OR%20C%23%20OR%20C%2B%2B%2FCLI)&origin=GLOBAL_SEARCH_HEADER
     let url = 'https://www.linkedin.com/search/results/index/?keywords=' +
-      encodeURIComponent(this.state.queryBuilder) +
+      encodeURIComponent(this.encodeQuery(this.state.new_query)) +
       '&origin=GLOBAL_SEARCH_HEADER';
 
     let win = window.open(url, '_blank');
     win.focus();
+  }
+
+  encodeQuery(query) {
+    const { queries } = this.props;
+    let value = '';
+    if (query.keys.length > 0) {
+      query.value.split(/{|}/).forEach((part) => {
+        let n = parseInt(part);
+        if (!isNaN(n)) {
+          const founded = queries.find(function (q) { return q.get('name') === query.keys[n] });
+          value += this.encodeQuery({value: founded.get('value'), keys: founded.get('keys').toArray()})
+        } else {
+          value += part
+        }
+      })
+    } else {
+      value = query.value;
+    }
+    return value
   }
 
   copyQuery() {
@@ -39,22 +59,38 @@ export default class Query extends React.Component {
     document.execCommand('copy');
   }
 
+  insertPredicateIntoQueryBuilder(e) {
+    const space = (this.state.new_query.value === '') ? '' : ' ';
+    let new_query = this.state.new_query;
+    new_query.value = this.state.new_query.value + space + e.target.value;
+    const queryBuilder = this.updateQueryBuilder(new_query);
+    this.setState({ new_query: new_query, queryBuilder: queryBuilder })
+  }
+
   insertQueryIntoQueryBuilder(query) {
+    const space = (this.state.new_query.value === '') ? '' : ' ';
+    let new_query = this.state.new_query;
+    new_query.value = this.state.new_query.value + space + '{' + this.state.new_query.keys.length + '}';
+    new_query.keys.push(query.get('name'));
+    const queryBuilder = this.updateQueryBuilder(new_query);
+    this.setState({ new_query: new_query, queryBuilder: queryBuilder });
+  }
+
+  updateQueryBuilder(query){
     let value = '';
-    if (query.get('keys').size > 0) {
-      query.get('value').split(/{|}/).forEach((part) => {
-        let n = Number(part);
+    if (query.keys.length > 0) {
+      query.value.split(/{|}/).forEach((part) => {
+        let n = parseInt(part);
         if (!isNaN(n)) {
-          value += query.get('keys').get(n)
+          value += query.keys[n];
         } else {
           value += part
         }
       })
     } else {
-      value = query.get('value');
+      value = query.value;
     }
-    let val = this.state.queryBuilder + ' ' + value;
-    this.setState({queryBuilder: val})
+    return value
   }
 
   render() {
@@ -107,6 +143,7 @@ export default class Query extends React.Component {
             <div className="input-group-btn">
               <button type="button" className="btn" onClick={this.searchOnLinkedIn}>LinkedIn</button>
               <button type="button" className="btn" onClick={this.copyQuery}>Copy</button>
+              <button type="button" className="btn">Add</button>
             </div>
           </div>
         </div>
