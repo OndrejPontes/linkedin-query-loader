@@ -1,29 +1,22 @@
-import { compose, createStore, applyMiddleware, combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
-import thunkMiddleware from 'redux-thunk';
+import { createStore, combineReducers } from 'redux';
+import { routerReducer as routing } from 'react-router-redux'
+import query from '../reducers/query'
+import queries from '../reducers/queries'
+import queryBuilder from '../reducers/queryBuilder'
 
-import loggerMiddleware from 'libs/middlewares/loggerMiddleware';
-
-import reducers, { initialStates } from '../reducers';
-
-export default props => {
-  const { queries } = props;
-  const { $$queriesState } = initialStates;
-
-  const initialState = {
-    $$queriesStore: $$queriesState.merge({
-      $$queries: queries
+const configStore = preloadedState => {
+  const store = createStore(
+    combineReducers({
+      query,
+      queries,
+      queryBuilder,
+      // preloadedState,
+      routing
     })
-  };
+  );
 
-  const reducer = combineReducers({
-    ...reducers,
-    routing: routerReducer,
-  });
-
-  const finalCreateStore = compose(
-    applyMiddleware(thunkMiddleware, loggerMiddleware),
-  )(createStore);
-
-  return finalCreateStore(reducer, initialState);
+  return store;
 };
+
+
+export default configStore

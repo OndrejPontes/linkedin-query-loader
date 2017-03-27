@@ -1,0 +1,27 @@
+.queries {
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  clear: both;
+  overflow: auto; }
+
+.predicateButton {
+  width: 20%;
+  padding: 5px;
+  box-sizing: border-box;
+  float: left;
+  margin: 0 0 4vh 0; }
+
+.predicateButton > button {
+  width: 100%; }
+
+.queryBuilder {
+  padding: 5px;
+  box-sizing: border-box;
+  width: 100%;
+  float: left;
+  margin: 0 0 4vh 0; }

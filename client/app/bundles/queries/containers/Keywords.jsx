@@ -3,7 +3,7 @@ import Keyword from '../components/Keyword';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Immutable from 'immutable';
-import * as siteActionCreators from '../actions/helloWorldActionCreators';
+import * as siteActionCreators from '../actions';
 
 function select(state) {
   return { queriesStore: state.$$queriesStore };
@@ -11,7 +11,7 @@ function select(state) {
 
 const Keywords = (props) => {
   const { dispatch, queriesStore } = props;
-  const actions = bindActionCreators(siteActionCreators, dispatch);
+  // const actions = bindActionCreators(siteActionCreators, dispatch);
   const { addQuery } = actions;
   const queries = queriesStore.get('$$queries');
 

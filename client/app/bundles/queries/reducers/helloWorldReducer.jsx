@@ -1,6 +1,11 @@
 import { Map } from 'immutable';
 
-import actionTypes from '../constants/helloWorldConstants';
+import {
+  ADD_PREDICATE,
+  ADD_QUERY,
+  OPEN_LINKEDIN,
+  COPY_QUERY
+} from '../constants/ActionTypes';
 
 export const $$initialState = Map({
   name: '', // this is the default state that would be used if one were not passed into the store
@@ -11,11 +16,26 @@ export default function helloWorldReducer($$state = $$initialState, action) {
   const { type, value } = action;
 
   switch (type) {
-    case actionTypes.HELLO_WORLD_NAME_UPDATE:
-      return $$state.set('name', value);
+    case ADD_PREDICATE:
+      console.log('ADD_PREDICATE');
+      // return $$state.set('name', value);
+      return $$state;
 
-    case actionTypes.ADD_QUERY:
-      return $$state.set('queries', $$state.queries.concat([value]));
+    case ADD_QUERY:
+      console.log('ADD_QUERY');
+    // return $$state.set('queries', $$state.queries.concat([value]));
+      return $$state;
+
+
+    case OPEN_LINKEDIN:
+      console.log('OPEN_LINKEDIN');
+    // return $$state.set('queries', $$state.queries.concat([value]));
+      return $$state;
+
+    case COPY_QUERY:
+      console.log('COPY_QUERY');
+    // return $$state.set('queries', $$state.queries.concat([value]));
+      return $$state;
 
     default:
       return $$state;

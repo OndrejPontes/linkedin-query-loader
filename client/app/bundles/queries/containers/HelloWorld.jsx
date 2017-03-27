@@ -3,7 +3,7 @@ import HelloWorldWidget from '../components/HelloWorldWidget';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Immutable from 'immutable';
-import * as helloWorldActionCreators from '../actions/helloWorldActionCreators';
+import * as helloWorldActionCreators from '../actions';
 
 function select(state) {
   // Which part of the Redux global state does our component want to receive as props?
@@ -14,7 +14,7 @@ function select(state) {
 // Simple example of a React "smart" component
 const HelloWorld = (props) => {
   const { dispatch, $$helloWorldStore } = props;
-  const actions = bindActionCreators(helloWorldActionCreators, dispatch);
+  // const actions = bindActionCreators(helloWorldActionCreators, dispatch);
   const { updateName } = actions;
   const name = $$helloWorldStore.get('name');
 
