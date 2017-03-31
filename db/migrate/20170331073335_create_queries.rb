@@ -4,7 +4,7 @@ class CreateQueries < ActiveRecord::Migration[5.0]
       t.string :name
       t.text :value
       t.boolean :disabled, default: false
-      t.references :main_query, index: true
+      t.string :keys, array: true, default: []
 
       t.timestamps
     end

@@ -18,11 +18,10 @@ ActiveRecord::Schema.define(version: 20170331073335) do
   create_table "queries", force: :cascade do |t|
     t.string   "name"
     t.text     "value"
-    t.boolean  "disabled",      default: false
-    t.integer  "main_query_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.index ["main_query_id"], name: "index_queries_on_main_query_id", using: :btree
+    t.boolean  "disabled",   default: false
+    t.string   "keys",       default: [],                 array: true
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
 end
