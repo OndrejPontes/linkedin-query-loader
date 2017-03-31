@@ -33,7 +33,7 @@ class QueriesController < ApplicationController
   private
 
   def query_params
-    params.permit(:name, :value)
+    params.permit(:name, :value, keys: [])
   end
 
   def set_query
