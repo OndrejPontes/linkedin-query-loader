@@ -15,7 +15,7 @@ import * as siteActionCreators from '../actions';
 const Queries = () => (
   // const { dispatch, queriesStore } = props;
   // const actions = bindActionCreators(siteActionCreators, dispatch);
-  // const { addQuery } = actions;
+  // const { createQuery } = actions;
   // const queries = queriesStore.get('$$queries');
 
   // This uses the ES2015 spread operator to pass properties as it is more DRY

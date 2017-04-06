@@ -2,7 +2,7 @@ import { Map } from 'immutable';
 
 import {
   ADD_PREDICATE,
-  ADD_QUERY,
+  CREATE_QUERY,
   OPEN_LINKEDIN,
   COPY_QUERY
 } from '../constants/ActionTypes';
@@ -21,8 +21,8 @@ export default function helloWorldReducer($$state = $$initialState, action) {
       // return $$state.set('name', value);
       return $$state;
 
-    case ADD_QUERY:
-      console.log('ADD_QUERY');
+    case CREATE_QUERY:
+      console.log('CREATE_QUERY');
     // return $$state.set('queries', $$state.queries.concat([value]));
       return $$state;
 

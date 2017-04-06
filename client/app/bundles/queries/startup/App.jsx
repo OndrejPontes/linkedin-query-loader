@@ -7,7 +7,8 @@ import {syncHistoryWithStore} from "react-router-redux";
 import {Router, browserHistory, Route, IndexRoute} from "react-router";
 import MainLayout from "../components/MainLayout";
 import Queries from "../containers/Queries";
-import Keywords from "../containers/Keywords";
+// import Keywords from "../containers/Keywords";
+import { fetchQueryIfNeeded } from '../actions'
 
 export default () => {
   window.tapInjected = true;
@@ -16,13 +17,15 @@ export default () => {
 
   const history = syncHistoryWithStore(browserHistory, store);
 
+  store.dispatch(fetchQueryIfNeeded())
+
   return (
     <Provider store={store}>
       <MuiThemeProvider>
         <Router history={ history }>
           <Route path="/" component={ MainLayout }>
             <IndexRoute component={ Queries }/>
-            <Route path="keywords" component={ Keywords }/>
+            {/*<Route path="keywords" component={ Keywords }/>*/}
           </Route>
         </Router>
       </MuiThemeProvider>

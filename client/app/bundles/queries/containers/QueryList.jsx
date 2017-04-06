@@ -1,10 +1,11 @@
 import { connect } from 'react-redux'
 import { addKeyword, addToQueryBuilder } from '../actions'
 import React, { PropTypes } from 'react'
+import axios from 'axios'
 
 const mapStateToProps = (state) => ({
   state: state,
-  queries: state.queries
+  queries: state.queries.items
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -16,14 +17,14 @@ const mapDispatchToProps = (dispatch) => ({
 
 const List = ({queries, onClick, state}) => {
 
-  console.log('STATE')
-  console.log(state)
-
-  return (<div className="queries">
+  return (
+    <div className="queries">
       { queries.map(query =>
-        <button key={query.name} onClick={() => onClick(query.name)}>
+      <div key={query.name} >
+        <button type="button" className="btn" onClick={() => onClick(query.name)}>
           { query.name }
         </button>
+      </div>
       )}
     </div>
   )

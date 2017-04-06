@@ -1,30 +1,16 @@
-import React, { PropTypes } from 'react';
-import Keyword from '../components/Keyword';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import Immutable from 'immutable';
-import * as siteActionCreators from '../actions';
+import { connect } from 'react-redux'
+import { updateQuery, deleteQuery, toggleModal} from '../actions'
 
-function select(state) {
-  return { queriesStore: state.$$queriesStore };
-}
+const mapStateToProps = (state) => ({
+  queries: state.queries.items
+});
 
-const Keywords = (props) => {
-  const { dispatch, queriesStore } = props;
-  // const actions = bindActionCreators(siteActionCreators, dispatch);
-  const { addQuery } = actions;
-  const queries = queriesStore.get('$$queries');
-
-  return (
-    <h1>
-      <Keyword {...{ addQuery, queries }} />
-    </h1>
-  );
+const mapDispatchToProps = {
+  updateQuery: updateQuery,
+  deleteQuery: deleteQuery,
+  toggleModal: toggleModal
 };
 
-Keywords.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  queriesStore: PropTypes.instanceOf(Immutable.Map).isRequired,
-};
+// const Keywords = connect(mapStateToProps, mapDispatchToProps)();
 
-export default connect(select)(Keywords);
+export default Keywords;

@@ -1,15 +1,15 @@
 import React, { PropTypes } from 'react'
 
-const Input = ({query, queryBuilder, addQuery, openLinkedIn, copyQuery}) => (
+const Input = ({query, queryBuilder, toggleCreateQuery, openLinkedIn, copyQuery}) => (
   <div className="queryBuilder">
     <div className="input-group">
       <input type="text" className="form-control" id="queryBuilder" value={ queryBuilder }/>
       <div className="input-group-btn">
         <button type="button" className="btn" onClick={ e => {
           e.preventDefault();
-          addQuery(query);
+          toggleCreateQuery();
         }}>
-          Add
+          Create
         </button>
         <button type="button" className="btn" onClick={ e => {
           e.preventDefault();

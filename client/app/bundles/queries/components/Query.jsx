@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import PredicateButton from '../containers/PredicateButton'
 import QueryBuilder from '../containers/QueryBuilder'
 import QueryList from '../containers/QueryList'
+import CreateQueryModal from '../containers/CreateQueryModal'
 
 let Query = () => (
   <div className="container">
@@ -13,6 +14,7 @@ let Query = () => (
     <PredicateButton predicate=")">)</PredicateButton>
     <QueryBuilder />
     <QueryList />
+    <CreateQueryModal />
   </div>
 );
 

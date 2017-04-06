@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { addQuery, openLinkedIn, copyQuery } from '../actions'
+import { toggleModal, openLinkedIn, copyQuery } from '../actions'
 import Input from '../components/Input'
 
 const mapStateToProps = (state) => ({
@@ -8,7 +8,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  addQuery: addQuery,
+  toggleCreateQuery: toggleModal,
   openLinkedIn: openLinkedIn,
   copyQuery: copyQuery
 };
