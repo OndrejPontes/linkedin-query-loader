@@ -1,13 +1,13 @@
 import React, { PropTypes } from 'react'
 
-const Input = ({query, queryBuilder, toggleCreateQuery, openLinkedIn, copyQuery}) => (
+const Input = ({query, queryBuilder, toggleCreateModal, openLinkedIn, copyQuery, queryBuilderOnChange, prepareToCopy}) => (
   <div className="queryBuilder">
     <div className="input-group">
-      <input type="text" className="form-control" id="queryBuilder" value={ queryBuilder }/>
+      <input type="text" onChange={queryBuilderOnChange} className="form-control" id="queryBuilder" value={ queryBuilder }/>
       <div className="input-group-btn">
         <button type="button" className="btn" onClick={ e => {
           e.preventDefault();
-          toggleCreateQuery();
+          toggleCreateModal();
         }}>
           Create
         </button>
@@ -18,7 +18,7 @@ const Input = ({query, queryBuilder, toggleCreateQuery, openLinkedIn, copyQuery}
           LinkedIn
         </button>
         <button type="button" className="btn" onClick={ e => {
-          e.preventDefault();
+          prepareToCopy()
           copyQuery(queryBuilder);
         }}>
           Copy

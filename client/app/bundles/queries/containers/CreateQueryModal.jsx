@@ -1,28 +1,29 @@
 import { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { createQuery, toggleModal } from '../actions'
+import { toggleCreateModal, clearQueryBuilder, validateAndCreateQuery } from '../actions'
 import { Modal, Button, FormGroup, FormControl, Form, ControlLabel } from 'react-bootstrap'
 import * as React from 'react'
 
 const mapStateToProps = (state) => ({
-  isModalVisible: state.modals.addQuery,
-  query: state.query
+  isModalVisible: state.modals.addQuery
 });
 
 const mapDispatchToProps = {
-  createQuery: createQuery,
-  toggleModal: toggleModal
+  toggleCreateModal,
+  clearQueryBuilder,
+  validateQuery: validateAndCreateQuery
 };
 
-const ModalAdd = ({isModalVisible, query, createQuery, toggleModal}) => {
+const ModalAdd = ({isModalVisible, toggleCreateModal, clearQueryBuilder, validateQuery}) => {
 
   function create() {
-    createQuery(Object.assign({}, query, { name: document.getElementById('queryName').value }))
-    toggleModal()
+    validateQuery(document.getElementById('queryName').value)
+    clearQueryBuilder()
+    toggleCreateModal()
   }
 
   return (
-    <Modal show={isModalVisible} onHide={toggleModal}>
+    <Modal show={isModalVisible} onHide={toggleCreateModal}>
       <Modal.Header closeButton>
         <Modal.Title>Add name of new query</Modal.Title>
       </Modal.Header>
@@ -31,12 +32,17 @@ const ModalAdd = ({isModalVisible, query, createQuery, toggleModal}) => {
           <FormGroup controlId="queryName">
             <ControlLabel>Name</ControlLabel>
             {' '}
-            <FormControl type="text" placeholder="Enter name of query" />
+            <FormControl onKeyPress={e => {
+              if(e.charCode===13){
+                e.preventDefault()
+                create()
+              }
+            }} type="text" placeholder="Enter name of query" />
           </FormGroup>
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={toggleModal}>Close</Button>
+        <Button onClick={toggleCreateModal}>Close</Button>
         <Button bsStyle="primary" onClick={create}>Create</Button>
       </Modal.Footer>
     </Modal>
@@ -45,12 +51,7 @@ const ModalAdd = ({isModalVisible, query, createQuery, toggleModal}) => {
 
 ModalAdd.propsType = {
   isModalVisible: PropTypes.bool.isRequired,
-  query: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
-    keys: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
-  }),
-  createQuery: PropTypes.func.isRequired,
+  validateQuery: PropTypes.func.isRequired,
   toggleModal: PropTypes.func.isRequired
 };
 
