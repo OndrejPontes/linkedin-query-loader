@@ -23,6 +23,9 @@ export default class Header extends React.Component {
               <li>
                 <Link to="/keywords" activeClassName="active">Keywords</Link>
               </li>
+              <li>
+                <Link to="/auth/twitter" activeClassName="active">Twitter</Link>
+              </li>
             </ul>
             <button type="button" className="btn btn-default navbar-btn navbar-right">Sign in</button>
           </div>

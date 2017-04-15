@@ -12,5 +12,7 @@ module LinkedinQueryLoader
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     config.action_cable.allowed_request_origins = [Rails.application.secrets.action_cable_url]
+
+
   end
 end
