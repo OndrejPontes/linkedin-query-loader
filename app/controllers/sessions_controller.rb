@@ -5,4 +5,12 @@ class SessionsController < ApplicationController
     puts "Welcome, #{@user.name}!"
     redirect_to root_path
   end
+
+  def destroy
+    if current_user
+      session.delete(:user_id)
+      flash[:success] = 'See you!'
+    end
+    redirect_to root_path
+  end
 end
