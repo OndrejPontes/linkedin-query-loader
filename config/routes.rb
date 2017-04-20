@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  use_doorkeeper
   get '/logout', to: 'sessions#destroy'
   get '/auth/:provider/callback', to: 'sessions#create'
   resources :queries
