@@ -8,10 +8,14 @@ Doorkeeper.configure do
     # Put your resource owner authentication logic here.
     # Example implementation:
     #   User.find_by_id(session[:user_id]) || redirect_to(new_user_session_url)
+    # User.find_by_id(session[:user_id]) || redirect_to('/auth/linkedin')
+    # redirect_to('/auth/linkedin') if User.find_by_id(session[:user_id]).nil?
     User.find_by_id(session[:user_id]) || redirect_to('/auth/linkedin')
+    # redirect_to('https://www.google.com')
   end
 
-  # If you want to restrict access to the web interface for adding oauth authorized applications, you need to declare the block below.
+  # If you want to restrict access to the web interface for adding oauth
+  # authorized applications, you need to declare the block below.
   # admin_authenticator do
   #   # Put your admin authentication logic here.
   #   # Example implementation:
@@ -105,8 +109,10 @@ Doorkeeper.configure do
   # so that the user skips the authorization step.
   # For example if dealing with a trusted application.
   # skip_authorization do |resource_owner, client|
-  #   client.superapp? or resource_owner.admin?
-  # end
+  skip_authorization do
+    true
+    # client.superapp? or resource_owner.admin?
+  end
 
   # WWW-Authenticate Realm (default "Doorkeeper").
   # realm "Doorkeeper"

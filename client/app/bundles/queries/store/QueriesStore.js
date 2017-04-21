@@ -2,6 +2,8 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { routerReducer as routing } from 'react-router-redux'
 import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
+import authMiddleware from '../middleware/auth'
+import auth from '../reducers/auth'
 import query from '../reducers/query'
 import queries from '../reducers/queries'
 import queryBuilder from '../reducers/queryBuilder'
@@ -16,16 +18,17 @@ const configStore= () => {
       query,
       queries,
       queryBuilder,
-      routing
+      routing,
+      auth
     }),
     applyMiddleware(
       thunkMiddleware,
-      loggerMiddleware
+      loggerMiddleware,
+      authMiddleware
     ),
   );
 
   return store;
 };
-
 
 export default configStore

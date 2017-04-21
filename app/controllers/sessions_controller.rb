@@ -3,7 +3,8 @@ class SessionsController < ApplicationController
     @user = User.from_omniauth(request.env['omniauth.auth'])
     session[:user_id] = @user.id
     puts "Welcome, #{@user.name}!"
-    redirect_to root_path
+    # redirect_to root_path #TODO pripoj sa
+    # @user
   end
 
   def destroy

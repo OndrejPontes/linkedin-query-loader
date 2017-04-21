@@ -8,15 +8,15 @@ import * as siteActionCreators from '../actions';
 // function select(state) {
   // Which part of the Redux global state does our component want to receive as props?
   // Note the use of `$$` to prefix the property name because the value is of type Immutable.js
-  // return { queriesStore: state.$$queriesStore };
+  // return { QueriesStore: state.$$QueriesStore };
 // }
 
 // Simple example of a React "smart" component
 const Queries = () => (
-  // const { dispatch, queriesStore } = props;
+  // const { dispatch, QueriesStore } = props;
   // const actions = bindActionCreators(siteActionCreators, dispatch);
   // const { createQuery } = actions;
-  // const queries = queriesStore.get('$$queries');
+  // const queries = QueriesStore.get('$$queries');
 
   // This uses the ES2015 spread operator to pass properties as it is more DRY
   // This is equivalent to:
@@ -35,7 +35,7 @@ const Queries = () => (
   // We prefix all property and variable names pointing to Immutable.js objects with '$$'.
   // This allows us to immediately know we don't call $$helloWorldStore['someProperty'], but
   // instead use the Immutable.js `get` API for Immutable.Map
-  // queriesStore: PropTypes.instanceOf(Immutable.Map).isRequired,
+  // QueriesStore: PropTypes.instanceOf(Immutable.Map).isRequired,
 // };
 
 // Don't forget to actually use connect!

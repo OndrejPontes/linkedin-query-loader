@@ -13,8 +13,11 @@ import {
   TOGGLE_CREATE_QUERY,
   TOGGLE_UPDATE_QUERY,
   RECEIVE_QUERY,
-  PREPARE_TO_COPY
+  PREPARE_TO_COPY,
+  LOGIN_FAILURE,
+  LOGIN_REQUEST
 } from '../constants/ActionTypes'
+import authorize from './oauth2'
 
 function shouldFetchQueries(queries) {
   if (queries.isFetching) {
@@ -100,6 +103,33 @@ const prepareToCopyObject = (value) => ({
   type: PREPARE_TO_COPY,
   value: value
 })
+
+const loginRequest = () => ({
+  type: LOGIN_REQUEST
+})
+
+const loginSuccess = (token) => ({
+  type: LOGIN_SUCCESS,
+  token
+})
+
+const loginFailure = (error) => ({
+  type: LOGIN_FAILURE,
+  error
+})
+
+export const login = (config) => (dispatch) => {
+  dispatch(loginRequest())
+  return authorize(config).then(
+    (token) => dispatch(loginSuccess(token)),
+    (error) => dispatch(loginFailure(error))
+  )
+}
+
+export const logout = () => ({
+  type: LOGOUT
+})
+
 
 export function validateAndCreateQuery(name) {
   return function (dispatch, getState) {
