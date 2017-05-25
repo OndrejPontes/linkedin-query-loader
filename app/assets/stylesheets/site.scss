@@ -1,37 +1,86 @@
-.queries {
-  box-sizing: border-box;
-  margin-bottom: 20px;
-  background-color: #fff;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-  clear: both;
-  overflow: auto; }
+#header {
+  padding: 3rem 1rem;
+  border-radius: 0; }
 
-.queries > div {
-  width: 20%;
-  padding: 5px;
-  box-sizing: border-box;
+#brand {
+  font-size: 3rem;
+  padding-right: 3rem; }
+
+#userName {
+  color: #8e8e8e;
+  font-size: 1.5rem;
+  margin-right: 2rem;
+  margin-bottom: 0;
+  font-weight: normal;
   float: left;
-  margin: 0 0 5px 0; }
+  padding-top: .99rem; }
 
-.queries > div > button {
-  width: 100%; }
+.link.active, .link.active:hover, .link.active:focus {
+  color: #fff; }
 
-.predicateButton {
+#navbarSupportedContent {
+  padding-right: 0; }
+
+.link, .link:hover, .link:focus {
+  color: #8e8e8e;
+  font-size: 2rem;
+  text-decoration: none;
+  padding-top: .6rem;
+  margin-right: 1rem; }
+
+#login {
+  font-size: 2rem; }
+
+#login:focus {
+  color: #fff;
+  background-color: #5cb85c; }
+
+#logout {
+  font-size: 2rem; }
+
+#logout:focus {
+  color: #fff;
+  background-color: #d9534f; }
+
+.queries-list.const-queries {
+  margin-bottom: 2rem; }
+
+.queries-list.const-queries > div > button {
+  font-size: 2rem;
+  width: 100%;
+  border-radius: .4rem; }
+
+.queries-list.const-queries > div {
+  display: inline-block;
   width: 20%;
-  padding: 5px;
-  box-sizing: border-box;
-  float: left;
-  margin: 0 0 4vh 0; }
+  padding-right: 1rem; }
 
-.predicateButton > button {
-  width: 100%; }
+.queries-list.const-queries > div:last-child {
+  padding: 0; }
+
+.queries-list.elementary-queries {
+  margin-top: 2rem;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  padding: 1rem;
+  max-height: 40%; }
+
+.queries-list.complex-queries {
+  margin-top: 2rem;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  padding: 1rem;
+  max-height: 40%; }
 
 .queryBuilder {
-  padding: 5px;
-  box-sizing: border-box;
-  width: 100%;
-  float: left;
-  margin: 0 0 4vh 0; }
+  clear: both; }
+
+.queryBuilder > div {
+  width: 70%;
+  float: left; }
+
+.queryBuilder > .btn {
+  width: 9%;
+  margin-left: 1%;
+  font-size: 1.99rem;
+  border-radius: 5px; }

@@ -1,5 +1,10 @@
 class QueriesController < ApplicationController
   before_action :set_query, only: [:show, :update, :destroy]
+  before_action :require_admin, only: [:update, :create, :destroy]
+
+  def nonadmin_actions
+    ["show", "index"]
+  end
 
   # GET /queries
   def index
@@ -38,5 +43,14 @@ class QueriesController < ApplicationController
 
   def set_query
     @query = Query.find(params[:id])
+  end
+
+  rescue_from ActionUnauthorized
+
+  def require_admin
+    return if nonadmin_actions.include?(action_name)
+    if User.find_by(id: session[:user_id]).is_admin
+      raise ActionUnauthorized
+    end
   end
 end

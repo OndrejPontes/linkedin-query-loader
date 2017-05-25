@@ -1,6 +1,8 @@
 import axios from 'axios'
 import {
   ADD_KEYWORD,
+  ADD_CURRENT_USER,
+  REMOVE_CURRENT_USER,
   QUERY_BUILDER_ON_CHANGE,
   ADD_PREDICATE,
   ADD_TO_QUERY_BUILDER,
@@ -228,5 +230,23 @@ export function openLinkedIn() {
 export function prepareToCopy() {
   return function (dispatch, getState) {
     dispatch(prepareToCopyObject(getQueryValue(getState)))
+  }
+}
+
+export function getCurrentUser() {
+  return function (dispatch) {
+    return axios.get('/current_user')
+      .then(function (response) {
+        dispatch({type: ADD_CURRENT_USER, user: response.data})
+      })
+  }
+}
+
+export function logout() {
+  return function (dispatch) {
+    return axios.delete('/logout')
+      .then(function (response) {
+        dispatch({type: REMOVE_CURRENT_USER})
+      })
   }
 }

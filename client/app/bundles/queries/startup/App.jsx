@@ -1,34 +1,67 @@
 import React from 'react'
-import ReactOnRails from "react-on-rails";
-import injectTapEventPlugin from "react-tap-event-plugin";
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {Provider} from "react-redux";
-import {syncHistoryWithStore} from "react-router-redux";
-import {Router, browserHistory, Route, IndexRoute} from "react-router";
-import MainLayout from "../components/MainLayout";
-import Queries from "../containers/Queries";
-import Keywords from "../containers/Keywords";
-import { fetchQueryIfNeeded } from '../actions'
+import { connect } from 'react-redux'
+
+import Immutable from "immutable"
+import immutableDev from "immutable-devtools"
+
+import { Provider } from 'react-redux'
+import { applyMiddleware, createStore } from 'redux'
+import { syncHistoryWithStore } from "react-router-redux";
+import thunk from 'redux-thunk'
+import { createLogger } from 'redux-logger'
+import { Router, browserHistory, Route, IndexRoute } from "react-router";
+
+import reducers from '../store/reducers/reducers'
+
+import Header from '../components/header/Header'
+import Queries from '../components/queries/Queries'
+import Keywords from '../components/keywords/Keywords'
+import Users from '../components/users/Users'
+import NotAvailable from '../components/NotAvailable'
+
+import { getCurrentUser } from '../store/actions/userActions'
+
+immutableDev(Immutable)
+
+let middleware = null
+
+if (process.env.NODE_ENV === "production") {
+  middleware = applyMiddleware(thunk)
+} else {
+  const logger = createLogger()
+  middleware = applyMiddleware(thunk, logger)
+}
+
+const store = createStore(
+  reducers,
+  middleware,
+)
+
+store.dispatch(getCurrentUser())
+
+// Debug
+console.log(process.env.NODE_ENV)
+if (process.env.NODE_ENV !== "production") {
+  window.store = store
+}
+
+const RouterApp = connect(state => ({isLoggedIn: state.user.is_login}))(({ history, isLoggedIn }) => (
+  <Router history={ history }>
+    <Route path="/" component={ Header }>
+      <IndexRoute component={ Queries }/>
+      <Route path="keywords" component={ isLoggedIn ? Keywords : NotAvailable}/>
+      <Route path="users" component={ isLoggedIn ? Users : NotAvailable}/>
+    </Route>
+  </Router>
+))
 
 export default () => {
-  window.tapInjected = true;
-  if (window && !window.tapInjected) {injectTapEventPlugin()}
-  const store = ReactOnRails.getStore('QueriesStore');
-
   const history = syncHistoryWithStore(browserHistory, store);
-
-  store.dispatch(fetchQueryIfNeeded())
 
   return (
     <Provider store={store}>
-      <MuiThemeProvider>
-        <Router history={ history }>
-          <Route path="/" component={ MainLayout }>
-            <IndexRoute component={ Queries }/>
-            <Route path="keywords" component={ Keywords }/>
-          </Route>
-        </Router>
-      </MuiThemeProvider>
+      <RouterApp history={history}/>
     </Provider>
   );
 };
+

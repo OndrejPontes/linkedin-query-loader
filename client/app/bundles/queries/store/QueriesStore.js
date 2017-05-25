@@ -8,6 +8,7 @@ import query from '../reducers/query'
 import queries from '../reducers/queries'
 import queryBuilder from '../reducers/queryBuilder'
 import modals from '../reducers/modals'
+import user from '../reducers/user'
 
 const loggerMiddleware = createLogger()
 
@@ -18,8 +19,8 @@ const configStore= () => {
       query,
       queries,
       queryBuilder,
-      routing,
-      auth
+      user,
+      routing
     }),
     applyMiddleware(
       thunkMiddleware,

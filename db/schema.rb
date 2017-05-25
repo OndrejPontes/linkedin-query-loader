@@ -63,12 +63,13 @@ ActiveRecord::Schema.define(version: 20170419064824) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "provider",   null: false
-    t.string   "uid",        null: false
-    t.string   "name"
-    t.string   "image_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "provider",                   null: false
+    t.string   "uid",                        null: false
+    t.string   "name",                       null: false
+    t.string   "image_url",                  null: false
+    t.boolean  "is_admin",   default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true, using: :btree
     t.index ["provider"], name: "index_users_on_provider", using: :btree
     t.index ["uid"], name: "index_users_on_uid", using: :btree
