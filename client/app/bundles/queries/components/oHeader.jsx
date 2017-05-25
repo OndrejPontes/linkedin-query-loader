@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router'
+import { connect } from 'react-redux'
 
-export default class Header extends React.Component {
-  render () {
+class Header extends Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
     return(
       <nav className="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
         <div className="container">
@@ -23,14 +28,20 @@ export default class Header extends React.Component {
               <li>
                 <Link to="/keywords" activeClassName="active">Keywords</Link>
               </li>
-              <li>
-                <Link to="/auth/twitter" activeClassName="active">Twitter</Link>
-              </li>
             </ul>
-            <button type="button" className="btn btn-default navbar-btn navbar-right">Sign in</button>
+            {(this.props.user.name.length < 1) ?
+              <button type="button" className="btn btn-default navbar-btn navbar-right"
+                    onClick={() => window.location.replace("auth/linkedin")}>Sign in</button>
+            :
+              <button type="button" className="btn btn-default navbar-btn navbar-right">Logout</button>
+            }
           </div>
         </div>
       </nav>
     )
   }
 }
+
+export default connect(state => ({
+  user: state.user
+}))(Header)

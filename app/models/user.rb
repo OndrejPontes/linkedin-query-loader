@@ -6,6 +6,7 @@ class User < ApplicationRecord
         name: auth_hash['info']['name'],
         image_url: auth_hash['info']['image']
     )
+    user.is_admin = count == 1
     user.save!
     user
   end

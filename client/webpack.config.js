@@ -32,6 +32,8 @@ const config = {
     path: '../app/assets/webpack',
   },
 
+  devtool: "source-map",
+
   resolve: {
     extensions: ['', '.js', '.jsx'],
     alias: {

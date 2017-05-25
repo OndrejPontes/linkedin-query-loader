@@ -1,0 +1,35 @@
+.queries-list.const-queries {
+  margin-bottom: 2rem;
+}
+
+.queries-list.const-queries > div > button {
+  font-size: 2rem;
+  width: 100%;
+  border-radius: .4rem;
+}
+
+.queries-list.const-queries > div {
+  display: inline-block;
+  width: 20%;
+  padding-right: 1rem;
+}
+
+.queries-list.const-queries > div:last-child{
+  padding: 0;
+}
+
+.queries-list.elementary-queries {
+  margin-top: 2rem;
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 5px;
+  padding: 1rem;
+  max-height: 40%;
+}
+
+.queries-list.complex-queries {
+  margin-top: 2rem;
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 5px;
+  padding: 1rem;
+  max-height: 40%;
+}

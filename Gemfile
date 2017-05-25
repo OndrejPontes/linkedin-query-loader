@@ -14,7 +14,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'omniauth-linkedin-oauth2'
-gem 'omniauth-twitter' # Until LinkedIn is broken
+gem 'omniauth-oauth2', '~> 1.3.1' #Fix problem with oauth2
 gem 'doorkeeper'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
