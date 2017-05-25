@@ -1,2 +1,1 @@
-web: rails db:migrate && rails s -p 3000
-client: sh -c 'rm app/assets/webpack/* || true && cd client && npm run build:development'
+web: bundle exec puma -C config/puma.rb
