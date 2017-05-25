@@ -1,6 +1,7 @@
 {
   "name": "linkedin-query-loader",
   "version": "0.0.1",
+
   "engines": {
     "node": "7.4.0",
     "npm": "4.0.5"
