@@ -15,7 +15,7 @@ gem 'uglifier', '3.1.4'
 gem 'coffee-rails', '~> 4.2'
 gem 'omniauth-oauth2', '1.3.1'
 gem 'omniauth-linkedin-oauth2'
-gem 'omniauth-oauth2', '~> 1.3.1' #Fix problem with oauth2
+# gem 'omniauth-oauth2', '~> 1.3.1' #Fix problem with oauth2
 gem 'doorkeeper'
 gem 'jquery-rails', '4.2.2'
 gem 'turbolinks', '~> 5'
