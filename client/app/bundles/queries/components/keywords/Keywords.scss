@@ -48,10 +48,6 @@
   display: inline-block;
 }
 
-.keywords > div > div:hover {
-  //background: #e5e5e5;
-}
-
 .name {
   width: 20%;
   float: left;
@@ -78,4 +74,24 @@
 .buttons > button:last-child {
   width: 49%;
   margin-right: 0;
+}
+
+.editBody {
+  padding: 2rem;
+}
+
+.editBody > div:first-child {
+  padding-bottom: 1rem;
+}
+
+.editBody > div > input{
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  width: 80%;
+  font-size: 1.5rem;
+}
+
+.leftLabel {
+  float: left;
+  width: 20%;
 }

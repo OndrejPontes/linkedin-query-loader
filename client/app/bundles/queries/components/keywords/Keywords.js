@@ -99,24 +99,27 @@ class Keywords extends Component {
             {
               this.state.showModal &&
               <Modal closeModal={this.closeModal} query={this.state.modalQuery} header="Update query">
-                <div>
-                  Name
-                  <input value={this.state.modalQuery.get('name')}
-                         onChange={e => this.setState({modalQuery: this.state.modalQuery.changeName(e.target.value)})}/>
+                <div className="editBody">
+                  <div>
+                    <div className="leftLabel">Name</div>
+                    <input className="form-control" value={this.state.modalQuery.get('name')}
+                           onChange={e => this.setState({modalQuery: this.state.modalQuery.changeName(e.target.value)})}/>
 
+                  </div>
+                  <div>
+                    <div className="leftLabel">Value</div>
+                    <Chips
+                      placeholder="Type a name of existing query"
+                      value={this.state.modalQuery.items.map(query => query.get('name')).toArray()}
+                      onChange={this.onChange}
+                      suggestions={this.props.data.map(query => query.get('name')).toArray()}
+                      fromSuggestionsOnly={true}
+                      uniqueChips={false}
+                      highlightFirstSuggestion={true}
+                    />
+                  </div>
                 </div>
-                <div>
-                  Value
-                  <Chips
-                    placeholder="Type a name of existing query or crete new one"
-                    value={this.state.modalQuery.items.map(query => query.get('name')).toArray()}
-                    onChange={this.onChange}
-                    suggestions={this.props.data.map(query => query.get('name')).toArray()}
-                    fromSuggestionsOnly={true}
-                    uniqueChips={false}
-                    highlightFirstSuggestion={true}
-                  />
-                </div>
+
                 <div className="modal-footer">
                   <button type="button" onClick={() => {
                     this.props.dispatch(updateQuery(this.state.modalQuery))
@@ -124,6 +127,7 @@ class Keywords extends Component {
                   }} className="btn btn-primary">Save</button>
                   <button type="button" onClick={this.closeModal} className="btn btn-secondary">Discard changes</button>
                 </div>
+
               </Modal>
             }
           </div>

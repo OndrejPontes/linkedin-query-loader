@@ -114,10 +114,13 @@ class QueryBuilder extends Component {
         <button type="button" className="btn btn-outline-primary" onClick={this.openModal}>Create</button>
         <button type="button" className="btn btn-outline-primary" onClick={this.copyQuery}>Copy</button>
         <button type="button" className="btn btn-outline-primary" onClick={this.openLinkedIn}>LinkedIn</button>
-        <input onChange={() => {}} id="toCopy" value={this.state.toCopy}/>
+        <input onChange={() => {
+        }} id="toCopy" value={this.state.toCopy}/>
 
-        {saving && <Modal closeModal={this.closeModal} header="Header">
-          <input onChange={this.changeName} name="Name" placeholder="Name"/>
+        {saving && <Modal closeModal={this.closeModal} header="Create new query">
+          <div className="nameBody">
+            <input className="form-control" onChange={this.changeName} name="Name" placeholder="Name"/>
+          </div>
           <div className="modal-footer">
             <button type="button" onClick={this.saveQuery} className="btn btn-primary">Save</button>
             <button type="button" onClick={this.closeModal} className="btn btn-secondary">Close</button>

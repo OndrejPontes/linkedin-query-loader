@@ -25,3 +25,13 @@
   padding: 0;
   border: none;
 }
+
+.nameBody {
+  padding: 2rem;
+}
+
+.nameBody > input {
+  font-size: 2rem;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+}

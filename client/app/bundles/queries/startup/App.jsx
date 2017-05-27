@@ -45,12 +45,12 @@ if (process.env.NODE_ENV !== "production") {
   window.store = store
 }
 
-const RouterApp = connect(state => ({isLoggedIn: state.user.is_login}))(({ history, isLoggedIn }) => (
+const RouterApp = connect(state => ({isAdmin: state.user.is_admin}))(({ history, isAdmin }) => (
   <Router history={ history }>
     <Route path="/" component={ Header }>
       <IndexRoute component={ Queries }/>
-      <Route path="keywords" component={ isLoggedIn ? Keywords : NotAvailable}/>
-      <Route path="users" component={ isLoggedIn ? Users : NotAvailable}/>
+      <Route path="keywords" component={ isAdmin ? Keywords : NotAvailable}/>
+      <Route path="users" component={ isAdmin ? Users : NotAvailable}/>
     </Route>
   </Router>
 ))

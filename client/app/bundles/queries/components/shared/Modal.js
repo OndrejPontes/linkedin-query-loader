@@ -7,7 +7,7 @@ const Modal = props => (
       <div className="modal-content">
         {
           props.header &&
-          <div className="modal-header">
+          <div className="modal-header" id="modal-header">
             <h5 className="modal-title">{props.header}</h5>
             <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={props.closeModal}>
               <span aria-hidden="true">&times;</span>
