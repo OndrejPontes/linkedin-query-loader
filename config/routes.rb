@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   resources :queries
+  resources :users
   get '/current_user', to: 'sessions#current_user'
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/keywords', to: 'site#index'

@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 
 import QueryItem from "./QueryItem"
-import Search from "./Search"
+import Search from "../../shared/Search"
 
 class QueriesList extends Component {
 
@@ -45,15 +45,17 @@ class QueriesList extends Component {
   }
 
   render() {
-    const {showSearch, className, selectQuery} = this.props
+    const {showSearch, className, selectQuery, text} = this.props
     const {queries, search} = this.state
 
     const mainClass = "queries-list " + className
     return (
       <div className={mainClass}>
-        {showSearch && <Search search={search} updateSearch={this.updateSearch}/>}
+        {showSearch && <Search text={text} search={search} updateSearch={this.updateSearch}/>}
+        <div>
         {queries.map((query, index) => <QueryItem buttonClassName={this.props.buttonClassName} key={index}
                                                   selectQuery={selectQuery} query={query}/>)}
+        </div>
       </div>
     )
   }

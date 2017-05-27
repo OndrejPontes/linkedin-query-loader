@@ -21,14 +21,14 @@ const q3 = new Query({
 describe("tempQueriesTest", () => {
 	it("should not disappoint us", () => {
 		expect(
-			q1.getFullValue()
+			q1.getItemsValue()
 		).toBe("Q1")
 		expect(
-			and.getFullValue()
+			and.getItemsValue()
 		).toBe("AND")
 		
 		expect(
-			q3.getFullValue()
+			q3.getItemsValue()
 		).toBe("Q1 AND Q2")
 	})
 })

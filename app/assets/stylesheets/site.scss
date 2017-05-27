@@ -1,6 +1,7 @@
 #header {
   padding: 3rem 1rem;
-  border-radius: 0; }
+  border-radius: 0;
+  margin-bottom: 0; }
 
 #brand {
   font-size: 3rem;
@@ -43,34 +44,156 @@
   background-color: #d9534f; }
 
 .queries-list.const-queries {
-  margin-bottom: 2rem; }
+  padding-bottom: 1rem;
+  margin-top: 2rem; }
 
-.queries-list.const-queries > div > button {
+.queries-list.const-queries > div > div > button {
   font-size: 2rem;
   width: 100%;
   border-radius: .4rem; }
 
-.queries-list.const-queries > div {
+.queries-list.const-queries > div > div {
   display: inline-block;
   width: 20%;
   padding-right: 1rem; }
 
-.queries-list.const-queries > div:last-child {
+.queries-list.const-queries > div > div:last-child {
   padding: 0; }
 
 .queries-list.elementary-queries {
   margin-top: 2rem;
   border: 1px solid #cccccc;
   border-radius: 5px;
-  padding: 1rem;
-  max-height: 40%; }
+  padding: 1rem; }
 
 .queries-list.complex-queries {
-  margin-top: 2rem;
+  margin-top: 1rem;
   border: 1px solid #cccccc;
   border-radius: 5px;
-  padding: 1rem;
-  max-height: 40%; }
+  padding: 1rem; }
+
+#search {
+  width: 55%;
+  float: right; }
+
+#search > input {
+  font-size: 1.5rem;
+  border-radius: 5px; }
+
+.queries-list > .row {
+  margin-bottom: 2rem; }
+
+.queries-list > div:last-child {
+  overflow: auto; }
+
+.queries-list > div:last-child > div {
+  float: left;
+  padding: 0 1rem 1rem 0; }
+
+.queries-list > div:last-child > div > button {
+  font-size: 2rem; }
+
+.elementary-queries, .complex-queries {
+  height: 33rem;
+  clear: both; }
+
+.elementary-queries > div:last-child, .complex-queries > div:last-child {
+  overflow-y: auto;
+  max-height: 25rem; }
+
+.header {
+  font-size: 2rem;
+  margin-top: 2rem;
+  width: 100%;
+  display: inline-block; }
+
+.header > div {
+  float: left; }
+
+.header > div:nth-child(1) {
+  width: 26.2%;
+  margin-left: 1.8%; }
+
+.header > div:nth-child(2) {
+  width: 32%;
+  margin-right: 8%;
+  text-align: center; }
+
+.header > div:nth-child(3) {
+  width: 32%; }
+
+.header > div:nth-child(3) > input {
+  border-radius: 5px;
+  font-size: 1.5rem; }
+
+.keywords {
+  margin-top: 2rem;
+  border: 1px solid #cccccc;
+  padding: 2rem;
+  border-radius: 5px;
+  font-size: 2rem; }
+
+.keywords > div {
+  overflow-y: auto;
+  height: 69.8rem; }
+
+.keywords > div > div {
+  width: 100%;
+  margin-bottom: 1rem;
+  display: inline-block; }
+
+.name {
+  width: 20%;
+  float: left;
+  font-weight: bold; }
+
+.value {
+  width: 50%;
+  float: left;
+  text-align: center; }
+
+.buttons {
+  width: 30%;
+  float: left; }
+
+.buttons > button {
+  width: 49%;
+  margin-right: 2%;
+  font-size: 2rem; }
+
+.buttons > button:last-child {
+  width: 49%;
+  margin-right: 0; }
+
+#modal {
+  opacity: 1;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  overflow: hidden;
+  outline: 0;
+  transition: opacity .15s linear; }
+
+#modal > div {
+  margin-top: 5%; }
+
+#modal > div > div {
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: .3rem;
+  outline: 0; }
+
+#modal > div > div > div {
+  display: block; }
+
+#modal > div > div > div > h5 {
+  font-size: 2rem; }
 
 .queryBuilder {
   clear: both; }
@@ -84,3 +207,13 @@
   margin-left: 1%;
   font-size: 1.99rem;
   border-radius: 5px; }
+
+.queriesName {
+  font-size: 2rem;
+  padding-left: 2rem; }
+
+#toCopy {
+  opacity: 0;
+  height: 0;
+  padding: 0;
+  border: none; }

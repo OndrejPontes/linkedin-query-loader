@@ -1,9 +1,9 @@
 import React from 'react'
 
-const UpdateModal = props => (
-  <div className="modal fade" style={{opacity: 1, display: "block", backgroundColor: "rgba(0,0,0,.3)"}}
+const Modal = props => (
+  <div className="modal fade" id="modal"
        onClick={props.closeModal}>
-    <div className="modal-dialog" role="document" style={{marginTop: "5%"}} onClick={e => e.stopPropagation()}>
+    <div className="modal-dialog" role="document" onClick={e => e.stopPropagation()}>
       <div className="modal-content">
         {
           props.header &&
@@ -20,4 +20,4 @@ const UpdateModal = props => (
   </div>
 )
 
-export default UpdateModal
+export default Modal
