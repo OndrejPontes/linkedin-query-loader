@@ -8,7 +8,7 @@ export const CHANGE_PERMISSIONS = "CHANGE_PERMISSIONS"
 
 export function getCurrentUser() {
   return function (dispatch) {
-    return axios.get('/current_user')
+    return axios.get('/api/current_user')
       .then(function (response) {
         dispatch({type: ADD_USER, user: response.data})
         response.data && dispatch(loadQueries())
@@ -19,7 +19,7 @@ export function getCurrentUser() {
 
 export function logout() {
   return function (dispatch) {
-    return axios.delete('/logout')
+    return axios.delete('/api/logout')
       .then(function () {
         dispatch({type: REMOVE_USER})
         dispatch({type: RESET_QUERIES})
@@ -29,7 +29,7 @@ export function logout() {
 
 export function getUsers() {
   return function (dispatch) {
-    return axios.get('/users')
+    return axios.get('/api/users')
       .then(function (response) {
         dispatch({type: GET_USERS, users: response.data})
       })
@@ -38,7 +38,7 @@ export function getUsers() {
 
 export function changePermissions(id, isAdmin) {
   return function (dispatch) {
-    return axios.put('/users/' + id, {is_admin: isAdmin})
+    return axios.put('/api/users/' + id, {is_admin: isAdmin})
       .then(function () {
         dispatch({type: CHANGE_PERMISSIONS, id, isAdmin})
       })

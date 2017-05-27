@@ -18,7 +18,7 @@ export const removeQuery = index => ({
 
 export function updateQuery(query) {
   return function (dispatch) {
-    return axios.put('/queries/' + query.id, {
+    return axios.put('/api/queries/' + query.id, {
       name: query.get('name'),
       value: query.get('value'),
       items: query.get('items').map(q => q.get('name')).toArray(),
@@ -34,7 +34,7 @@ export function updateQuery(query) {
 
 export function addQueryToDb(query) {
   return function (dispatch) {
-    return axios.post('/queries', query)
+    return axios.post('/api/queries', query)
       .then(function (response) {
         dispatch({
           type: ADD_QUERY,
@@ -47,7 +47,7 @@ export function addQueryToDb(query) {
 
 export function loadQueries() {
   return function (dispatch) {
-    return axios.get('/queries')
+    return axios.get('/api/queries')
       .then(function (response) {
         dispatch({type: GET_QUERIES, queries: response.data})
       })
