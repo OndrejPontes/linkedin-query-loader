@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :require_user, only: [:logout]
+
   def create
     @user = User.from_omniauth(request.env['omniauth.auth'])
     session[:user_id] = @user.id
@@ -11,6 +13,13 @@ class SessionsController < ApplicationController
 
   def logout
     session.delete(:user_id)
-    # redirect_to root_path
+  end
+
+  private
+
+  def require_user
+    unless User.find_by(id: session[:user_id])
+      render json: {error: "Unauthorized, you need to sign in", status: 401}, status: 401
+    end
   end
 end

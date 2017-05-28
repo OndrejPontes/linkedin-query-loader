@@ -1,20 +1,12 @@
 class QueriesController < ApplicationController
-  before_action :set_query, only: [:show, :update, :destroy]
-  # before_action :require_admin, only: [:update, :create, :destroy]
-
-  # def nonadmin_actions
-  #   ["show", "index"]
-  # end
+  before_action :set_query, only: [:update, :destroy]
+  before_action :require_admin, only: [:update, :create, :destroy]
+  before_action :require_user, only: [:index]
 
   # GET /queries
   def index
     @queries = Query.all
     json_response(@queries)
-  end
-
-  # GET /queries/:id
-  def show
-    json_response(@query)
   end
 
   # POST /queries
@@ -44,13 +36,16 @@ class QueriesController < ApplicationController
   def set_query
     @query = Query.find(params[:id])
   end
-  #
-  # rescue_from ActionUnauthorized
-  #
-  # def require_admin
-  #   return if nonadmin_actions.include?(action_name)
-  #   if User.find_by(id: session[:user_id]).is_admin
-  #     raise ActionUnauthorized
-  #   end
-  # end
+
+  def require_admin
+    unless User.find_by(id: session[:user_id]).is_admin
+      render json: {error: "Unauthorized, you need to be administrator", status: 401}, status: 401
+    end
+  end
+
+  def require_user
+    unless User.find_by(id: session[:user_id])
+      render json: {error: "Unauthorized, you need to sign in", status: 401}, status: 401
+    end
+  end
 end

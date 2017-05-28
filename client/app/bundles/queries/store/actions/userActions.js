@@ -12,7 +12,8 @@ export function getCurrentUser() {
       .then(function (response) {
         dispatch({type: ADD_USER, user: response.data})
         response.data && dispatch(loadQueries())
-        dispatch(getUsers())
+        if(response.data && response.data.is_admin)
+          dispatch(getUsers())
       })
   }
 }
@@ -23,6 +24,7 @@ export function logout() {
       .then(function () {
         dispatch({type: REMOVE_USER})
         dispatch({type: RESET_QUERIES})
+        window.location.replace("")
       })
   }
 }
