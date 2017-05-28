@@ -20,7 +20,6 @@ export const complexQueriesSelector = createSelector(
 )
 
 export const nonConstSelector = createSelector(
-  elementaryQueriesSelector,
-  complexQueriesSelector,
-  (elementaryQueries, complexQueries) => elementaryQueries.merge(complexQueries)
+  queriesSelector,
+  (queries) => queries.filter(query => query.type !== QUERY_TYPES.CONSTANT)
 )

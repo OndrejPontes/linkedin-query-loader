@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import { nonConstSelector } from "../../store/selectors/queriesSelectors"
 import Chips from "react-chips"
 
-import { updateQuery } from "../../store/actions/queriesActions"
+import { updateQuery, removeQuery } from "../../store/actions/queriesActions"
 
 import Keyword from './Keyword'
 import Modal from '../shared/Modal'
@@ -24,6 +24,7 @@ class Keywords extends Component {
     this.closeModal = this.closeModal.bind(this)
     this.updateSearch = this.updateSearch.bind(this)
     this.onChange = this.onChange.bind(this)
+    this.deleteQuery = this.deleteQuery.bind(this)
   }
 
   componentWillReceiveProps(props) {
@@ -78,6 +79,10 @@ class Keywords extends Component {
     }
   }
 
+  deleteQuery(query) {
+    this.props.dispatch(removeQuery(query))
+  }
+
   render() {
     return (
       <div>
@@ -93,7 +98,7 @@ class Keywords extends Component {
           <div>
             {
               this.state.keywords.map((query, index) =>
-                <Keyword key={index} query={query} openModal={this.openModal}/>
+                <Keyword key={index} deleteQuery={this.deleteQuery} query={query} openModal={this.openModal}/>
               )
             }
             {

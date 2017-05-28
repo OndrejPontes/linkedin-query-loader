@@ -8,7 +8,8 @@ const Keyword = props => (
       <button type="button" className="btn btn-outline-primary"
               onClick={() => props.openModal(props.query)}>Edit
       </button>
-      <button type="button" className="btn btn-outline-danger">Delete</button>
+      <button type="button" className="btn btn-outline-danger"
+              onClick={() => props.deleteQuery(props.query)}>Delete</button>
     </div>
   </div>
 )

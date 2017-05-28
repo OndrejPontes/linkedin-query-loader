@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { Link } from "react-router"
+import Alert from 'react-s-alert';
 
 import { login, logout } from "../../store/actions/userActions"
 
@@ -62,6 +63,7 @@ class Header extends Component {
         <div className="container">
           {this.props.children}
         </div>
+        <Alert stack={{limit: 4}} timeout={3000} position="bottom-right" effect="jelly" beep={false}/>
       </div>
     )
   }

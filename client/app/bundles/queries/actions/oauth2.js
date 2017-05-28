@@ -6,8 +6,6 @@ const listenForCredentials = (popup, state, resolve, reject) => {
   let hash
   try {
     hash = popup.location.hash
-    console.log('---------Popup---------')
-    console.log(pop)
   } catch (err) {
     if (process.env.NODE_ENV !== 'production') {
       /* eslint-disable no-console */

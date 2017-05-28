@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import Chips from "react-chips"
+import Alert from 'react-s-alert';
 
 import { QUERY_TYPES } from "../../../containers/Query"
 
@@ -75,6 +76,7 @@ class QueryBuilder extends Component {
       '&origin=GLOBAL_SEARCH_HEADER';
 
     window.open(url, '_blank').focus();
+    Alert.success('New card in your browser id opened with results.');
   }
 
   getRealValue(queries) {
@@ -91,7 +93,7 @@ class QueryBuilder extends Component {
       document.querySelector("#toCopy").select();
       document.execCommand('copy');
     }, 1);
-
+    Alert.success('Query is copied.');
   }
 
   render() {

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Alert from 'react-s-alert'
 
 export const ADD_QUERY = "ADD_QUERY"
 export const REMOVE_QUERY = "REMOVE_QUERY"
@@ -11,9 +12,9 @@ export const addQuery = query => ({
   query,
 })
 
-export const removeQuery = index => ({
+export const removeQuery = query => ({
   type: REMOVE_QUERY,
-  index,
+  query,
 })
 
 export function updateQuery(query) {
@@ -29,6 +30,9 @@ export function updateQuery(query) {
           query,
         })
       })
+      .catch(function (error) {
+        Alert.error('Query with name "' + query.get('name') + '" was not updated. Error: ' + error);
+      });
   }
 }
 
@@ -42,6 +46,9 @@ export function addQueryToDb(query) {
           convert: true
         })
       })
+      .catch(function (error) {
+        Alert.error('Query with name "' + query.name + '" was not created. Error: ' + error);
+      });
   }
 }
 
