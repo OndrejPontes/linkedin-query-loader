@@ -21,8 +21,6 @@ import NotAvailable from '../components/shared/NotAvailable'
 
 import { getCurrentUser } from '../store/actions/userActions'
 
-immutableDev(Immutable)
-
 let middleware = null
 
 if (process.env.NODE_ENV === "production") {
@@ -30,6 +28,7 @@ if (process.env.NODE_ENV === "production") {
 } else {
   const logger = createLogger()
   middleware = applyMiddleware(thunk, logger)
+  immutableDev(Immutable)
 }
 
 const store = createStore(

@@ -3,26 +3,12 @@ const path = require('path');
 const autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-
-const devBuild = process.env.NODE_ENV !== 'production';
-const nodeEnv = devBuild ? 'development' : 'production';
-
-// let extractCSS = new ExtractTextPlugin('../app/assets/stylesheets/[name].css');
+const devBuild = true;
+const nodeEnv = 'development';
 
 const config = {
   entry: [
     'bootstrap-loader',
-    'babel-polyfill',
-    'es5-shim/es5-shim',
-    'es5-shim/es5-sham',
-    'jquery',
-    // 'css-loader',
-    // 'react-bootstrap',
-    'react-dom',
-    'react-redux',
-    'react-on-rails',
-    'react-router-redux',
-    'redux-thunk',
     './app/bundles/queries/startup/registration.jsx',
     './app/bundles/queries/main.scss',
   ],
@@ -31,8 +17,6 @@ const config = {
     filename: 'webpack-bundle.js',
     path: '../app/assets/webpack',
   },
-
-  devtool: "source-map",
 
   resolve: {
     extensions: ['', '.js', '.jsx'],
@@ -62,8 +46,6 @@ const config = {
       { test: /\.scss$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader") }
     ],
   },
-  // postcss: [autoprefixer],
-  // sassResources: ['./app/assets/styles/app-variables.scss'],
 };
 
 module.exports = config;
