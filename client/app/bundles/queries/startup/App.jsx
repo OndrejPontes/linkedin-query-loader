@@ -17,7 +17,7 @@ import Header from '../components/header/Header'
 import Queries from '../components/queries/Queries'
 import Keywords from '../components/keywords/Keywords'
 import Users from '../components/users/Users'
-import NotAvailable from '../components/NotAvailable'
+import NotAvailable from '../components/shared/NotAvailable'
 
 import { getCurrentUser } from '../store/actions/userActions'
 
