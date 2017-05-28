@@ -3,8 +3,8 @@ const path = require('path');
 const autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const devBuild = true;
-const nodeEnv = 'development';
+const devBuild = process.env.NODE_ENV !== 'production';
+const nodeEnv = devBuild ? 'development' : 'production';
 
 const config = {
   entry: [
